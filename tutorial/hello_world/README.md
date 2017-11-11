@@ -6,7 +6,7 @@ nim compile hello.nim
 nim c hello.nim
 ```
 とすればコンパイルされる。
-`nim c --run hello.nim`または`nim c -r hello.nim`とするとコンパイルの後に実行される。
+`nim c --run hello.nim`または`nim c -r hello.nim`とするとコンパイルの後に実行される。  
 引数を渡すには
 ```
 nim compile --run hello.nim 引数1 引数2
