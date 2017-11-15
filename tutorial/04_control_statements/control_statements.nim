@@ -17,6 +17,7 @@ if name == "name": echo "インデントいらない。"
 elif name == "mau": echo "どうも"; echo";で同じ行にもかける"
 else: echo "楽しいNim"
 
+# and と or, not
 if true and false:
   echo "この文は表示されない"
 if false or not false:
@@ -35,6 +36,7 @@ from strutils import parseInt
 
 echo "数字を入力してください: "
 let n = parseInt(readLine(stdin))
+# :ないのが気持ち悪い、悪くない？
 case n
 of 1192:
   echo "鎌倉幕府！"
@@ -51,6 +53,13 @@ else: discard # ここがないとコンパイルエラーになる。
 全てのパターンを網羅できてないためである。
 コンパイラが教えてくれているのはありがたい。
 ]#
+
+# 実はどうやらこう書ける。こっちの方が精神衛生上いい気がする...
+case n:
+  of 0:
+    echo "0"
+  else:
+    discard
 
 # when文 ################################
 
@@ -153,11 +162,17 @@ block label:
     
     for j in 1..3:
       if i == 4:
+        # labelブロックを抜けるため、iが5の時は実行されない
         break label
       echo "２個目のfor文の中"
 
 # block文はスコープを作るのでコンパイルエラーになる。
 # echo block_var
+
+# これは実行時エラーになるよう
+#block label2:
+#  echo "aaaa"
+#  continue # SIGSEGV引き起こすらしい、コンパイラの反応的に。
 
 #[
 混乱しないようにまとめ
