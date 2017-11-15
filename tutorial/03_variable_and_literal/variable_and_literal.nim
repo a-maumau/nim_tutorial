@@ -13,10 +13,10 @@ var x,y = 0 # x = ３, y = 3 となることに注意
 var a,b : int
 
 # これはエラー
-#型が決まらないといけない
+# 型が決まらないといけない
 # var x
 
-# これもエラー, Pythonじゃないので静的型付けです。
+# これもコンパイルエラー, Pythonじゃないので静的型付けです。
 # x = 0.05
 
 # 一気に宣言も可能
@@ -68,10 +68,10 @@ const
     ss = "string!"
 # というようにできる
 
-# エラー。代入はできない。
+# コンパイルエラー。代入はできない。
 # ss = "ddd"
 
-# 初期値を与えないのもエラー
+# 初期値を与えないのもコンパイルエラー
 # const cons: int
 
 # 計算は当然可能
@@ -81,18 +81,18 @@ echo "\nq ", q
 # let文
 let l = "人類よこれがletだ。"
 
-# エラー
+# コンパイルエラー
 # l = "書き換えできない"
 
-# 初期値与えないのもエラー
+# 初期値与えないのもコンパイルエラー
 # let ll : int
 
 # const と let の違い
 # readLine(stdin)は端末からの入力を受け取る関数
 # 改行したくないとき
 stdout.write "入力を : "
-# エラー
-#const input = readLine(stdin)
+# コンパイルエラー
+# const input = readLine(stdin)
 # 動く
 let input = readLine(stdin)
 
