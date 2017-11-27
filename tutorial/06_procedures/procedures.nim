@@ -42,12 +42,11 @@ proc f(x:int):float =
   返り値を持つprocedureは暗黙的に
   resultという変数名の変数が返り値の型の
   デフォルト初期値で初期化されている。
-  return で何も指定しない。
-  あるいはreturnも指定しないとresultが
-  暗黙的にreturnされている
+  return で何も指定しない、あるいはreturnも指定しないと
+  resultが暗黙的にreturnされている
 ]# 
 
-proc result_kaesu(x:int):float =
+proc result_kaesu(x:int): float =
   if x == 0:
     return 10
   elif x == 1:
@@ -62,8 +61,8 @@ echo result_kaesu(2)
 echo result_kaesu(3)
 
 # resultを書き換えることもできる
-proc result_kaesu2():int= 
-  result = 10 # varがなくても書き換えられる。
+proc result_kaesu2(): int = 
+  result = 10 # var resultがなくても書き換えられる。
   return
 
 echo "new result value:",result_kaesu2()
@@ -116,7 +115,7 @@ echo "v1:",v1, " v2:",v2
 function_var(v1, v2)
 echo "v1:",v1, " v2:",v2
 
-# 名前付き引数とデフォルト値
+# 名前付き引数とデフォルト値 ################################
 # 名前付き引数
 proc named_param(db_name, command: string, user_id:int)=
   echo "db_name ", db_name
@@ -132,15 +131,11 @@ named_param(user_id=114514,
 # のように "," を ";"にしてもよいようだ、
 
 # これでクソみたいな関数を作っても大丈夫！ ※実際には許されない
-proc named_param_bad(height, name, weight, age:string)=
-  echo "name ", name
-  echo "age ", age
-  echo "height ", height
-  echo "weight ", weight
+# proc named_param_bad(height, name, weight, age:string)=
 
 # デフォルト値
 # 型推論によって型を指定しなくてもよい。
-proc named_param2(age = 15, height=160, weight=49, cv="早見沙織") =
+proc named_param2(age=15, height=160, weight=49, cv="早見沙織") =
   echo "age ", age
   echo "height ", height
   echo "weight ", weight
@@ -166,9 +161,11 @@ echo div_x_by_y(5, 2.0)
 
 # 演算子の方は省略。
 
-# 前方宣言
+
+# 前方宣言 ################################
 # 要は使う前に宣言されてないといけないということ。
 # C言語でいうところのプロトタイプ宣言
+# 宣言しているprocの"="から先を削ったものを書けばよい。
 
 proc fact(n :int):int # ここがないとコンパイルエラー
 
@@ -196,5 +193,5 @@ proc sumTillNegative(x: varargs[int]): int =
     result = result + i
 
 echo sumTillNegative(1,2,3,4,5,-1,10,20)
-# 型が違うmのが入るとエラー
+# 型が違うものが入るとエラー
 # echo sumTillNegative(1,2.0,3,4,5,-1,10,20)
